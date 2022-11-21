@@ -120,6 +120,15 @@ function PaginationButton (page, items) {
 
 	return button;
 }
+const searchBar=document.getElementById('searchBar')
+searchBar.addEventListener('keyup',(e)=>{
+  const searchString=e.target.value;
+  const filtered_blogs=list_items.filter( blog =>{
+    return blog.heading.toLowerCase().includes(searchString.toLowerCase())
+  })
+ DisplayList(filtered_blogs,list_element,rows,current_page)
+ SetupPagination(filtered_blogs, pagination_element, rows);
+})
 
 DisplayList(list_items, list_element, rows, current_page);
 SetupPagination(list_items, pagination_element, rows);
